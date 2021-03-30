@@ -5,7 +5,7 @@ bs4
 requests
 rich
 gitpython
-python
+python3
 telebot
 userbot
 asyncio
