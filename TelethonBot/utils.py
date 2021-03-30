@@ -1,5 +1,5 @@
-# By < @xditya >
-# // @BotzHub //
+# By < @Saygisizlar >
+# // @SaygisizlarSahip //
 
 import sys
 import logging
