@@ -1,2 +1,11 @@
 python-decouple
 telethon
+heroku3
+bs4
+requests
+rich
+gitpython
+python
+telebot
+userbot
+asyncio
