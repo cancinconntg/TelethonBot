@@ -7,8 +7,7 @@ from telethon import events, Button
 async def start(event):
     await event.reply("Hello!",
                     buttons=[
-                        [Button.url("ButtonUrl", url="https://t.me/xditya")],
-                        [Button.inline("Inline Button",data="example")]
+                        [Button.url("Grubumuz", url="https://t.me/Saygisizlar")],
                     ])
 
 @BotzHub.on(events.callbackquery.CallbackQuery(data="example"))
