@@ -1,5 +1,5 @@
-# By < @xditya >
-# // @BotzHub //
+# By < @Saygisizlar >
+# // @SaygisizlarSahip //
 
 import glob
 from pathlib import Path
@@ -19,7 +19,7 @@ for name in files:
         load_plugins(plugin_name.replace(".py", ""))
 
 print("Successfully deployed!")
-print("Enjoy! Do visit @BotzHub")
+print("Eğlen. Grubumuza gel @Saygisizlar )
 
 if __name__ == "__main__":
     BotzHub.run_until_disconnected()
