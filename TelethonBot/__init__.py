@@ -1,5 +1,5 @@
-# By < @xditya >
-# // @BotzHub //
+# By < @Saygisizlar >
+# // @SaygisizlarSahip //
 
 from telethon import TelegramClient
 from decouple import config
