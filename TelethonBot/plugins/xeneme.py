@@ -4,6 +4,8 @@ from telethon.events import NewMessage
 from userbot.events import register
 from userbot import bot
 from asyncio import sleep
+from .. import BotzHub
+from telethon import events, Button
 
 
 @BotzHub.on(events.NewMessage(incoming=True, pattern="/start"))
