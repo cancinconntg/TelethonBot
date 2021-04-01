@@ -20,7 +20,7 @@ async def deneme(event: NewMessage.Event):
     _id: str = text[1]
     if _id.startswith("@"):
         _id = _id.replace("@", "")
-    async for user in event.client.iter_participants(-1001326131404):
+    async for user in event.BotzHub.iter_participants(-1001326131404):
         if not user.bot:
           if user.username != None:
         	  print(user.username)
