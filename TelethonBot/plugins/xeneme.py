@@ -1,37 +1,39 @@
-from telethon.tl.types import ChannelParticipantsAdmins
-from userbot.cmdhelp import CmdHelp
-from telethon.events import NewMessage
-from userbot.events import register
-from userbot import bot
-from asyncio import sleep
-from .. import BotzHub
-from telethon import events, Button
+import telebot
 
+TOKEN = "1699009884:AAHjE7wUGrSQgLUlIWgzucaV91dVJSDZhVs" #@BotFather
+bot = telebot.TeleBot(TOKEN)
 
-@BotzHub.on(events.NewMessage(incoming=True, pattern="/start"))
-async def deneme(event: NewMessage.Event):
-    Mention = []
-    reason = ""
-    text: str = event.message.text.split()
-    try:
-        reason = " ".join(text[2:])
-    except:
-        pass
-    _id: str = text[1]
-    if _id.startswith("@"):
-        _id = _id.replace("@", "")
-    async for user in event.BotzHub.iter_participants(-1001326131404):
-        if not user.bot:
-          if user.username != None:
-        	  print(user.username)
-        	  Mention.append(user.username)
-        	
-    for etiket in Mention:
-      await bot.send_message(-1001326131404, f"@{etiket} {reason}")
-      Mention.remove(etiket)
-      await sleep(0.5)
-            
-Komut = CmdHelp('Saygısızlar Mention')
-Komut.add_info('Bu plugin @cancinconn tarafından yazılmıştır.')
-Komut.add()
+@bot.message_handler(commands=["start"])
+def start(message):
+    chat_id = message.chat.id
+    bot.send_message(chat_id, "Mandame un privado con '/join {0}'".format(chat_id))
 
+@bot.message_handler(commands=["join"])
+def join(message):
+    print "group: " + message.text.replace("/join","").replace(" ","")
+    user_id = str(message.from_user.id)
+    id_file = open("id.txt","a+")
+    id_list = id_file.readlines()
+    estar = False
+    print user_id, id_list  
+    for i in id_list:
+        if i.replace("\n","") == user_id:
+            estar = True
+    if not estar:
+        id_file.write("{0}\n".format(user_id))
+    id_file.close()
+
+@bot.message_handler(commands=["all@mentionicindenemebot","all"])
+def all(message):
+    ctext = message.text.replace("/all ","")
+    id_list = open("id.txt","r").readlines()
+    for i in id_list:
+        user_id = i.replace("\n","")
+        #bot.send_message(int(user_id), text)
+        bot.send_message(int(user_id), "@" + str(message.from_user.username) + " (*" + message.chat.title + "*): " + ctext + "\n", parse_mode = 'Markdown')
+        
+@bot.message_handler(commands=["data"])
+def data(message):
+    print(message)
+
+bot.polling()
