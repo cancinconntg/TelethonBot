@@ -6,7 +6,7 @@ from userbot import bot
 from asyncio import sleep
 
 
-@register(outgoing=True, pattern="^.etiket ?(\w*)")
+@BotzHub.on(events.NewMessage(incoming=True, pattern="/start"))
 async def deneme(event: NewMessage.Event):
     Mention = []
     reason = ""
