@@ -20,6 +20,5 @@ for name in files:
 
 print("Successfully deployed!")
 print("Eğlen. Grubumuza gel @Saygisizlar )
-
 if __name__ == "__main__":
     BotzHub.run_until_disconnected()
