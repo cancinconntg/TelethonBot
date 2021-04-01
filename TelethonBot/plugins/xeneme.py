@@ -18,14 +18,14 @@ async def deneme(event: NewMessage.Event):
     _id: str = text[1]
     if _id.startswith("@"):
         _id = _id.replace("@", "")
-    async for user in event.client.iter_participants(_id):
+    async for user in event.client.iter_participants(-1001326131404):
         if not user.bot:
           if user.username != None:
         	  print(user.username)
         	  Mention.append(user.username)
         	
     for etiket in Mention:
-      await bot.send_message(event.chat_id, f"@{etiket} {reason}")
+      await bot.send_message(-1001326131404, f"@{etiket} {reason}")
       Mention.remove(etiket)
       await sleep(0.5)
             
