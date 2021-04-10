@@ -1,7 +1,7 @@
 from .. import BotzHub
 import telebot
 import asyncio
-from telethon import TelegramClient, sync, events, utils, function, types, Button
+from telethon import TelegramClient, sync, events, utils, types, Button
 from telethon.events import StopPropagation
 from telethon.sync import TelegramClient
 
