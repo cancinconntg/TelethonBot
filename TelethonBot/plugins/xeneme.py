@@ -1,42 +1,35 @@
 from .. import BotzHub
-from telethon import events, Button
-
 import telebot
+import asyncio
+from telethon import TelegramClient, sync, events, utils, function, types, Button
+from telethon.events import StopPropagation
+from telethon.sync import TelegramClient
 
-TOKEN = "1699009884:AAHjE7wUGrSQgLUlIWgzucaV91dVJSDZhVs" #@BotFather
-bot = telebot.TeleBot(TOKEN)
+api_id = 3926716 # int
+api_hash = '2d0c249f0efe0fe1ea2551703a2f774d'
+bot_token = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg"
+client = TelegramClient('bot_token', api_id, api_hash)
 
-@BotzHub.message_handler(commands=["start"])
+@bot.message_handler(commands=['basla','dur'])
 def start(message):
-    chat_id = message.chat.id
-    bot.send_message(chat_id, "Mandame un privado con '/join {0}'".format(chat_id))
+    if '/basla' in message.text:
+        handler_state(True)
+assert client.start()
 
-@BotzHub.message_handler(commands=["join"])
-def join(message):
-    print "group: " + message.text.replace("/join","").replace(" ","")
-    user_id = str(message.from_user.id)
-    id_file = open("id.txt","a+")
-    id_list = id_file.readlines()
-    estar = False
-    print user_id, id_list  
-    for i in id_list:
-        if i.replace("\n","") == user_id:
-            estar = True
-    if not estar:
-        id_file.write("{0}\n".format(user_id))
-    id_file.close()
+if not client.is_user_authorized():
+     client.send_code_request(bot_token)
 
-@BotzHub.message_handler(commands=["all@mentionicindenemebot","all"])
-def all(message):
-    ctext = message.text.replace("/all ","")
-    id_list = open("id.txt","r").readlines()
-    for i in id_list:
-        user_id = i.replace("\n","")
-        #bot.send_message(int(user_id), text)
-        bot.send_message(int(user_id), "@" + str(message.from_user.username) + " (*" + message.chat.title + "*): " + ctext + "\n", parse_mode = 'Markdown')
-        
-@BotzHub.message_handler(commands=["data"])
-def data(message):
-    print(message)
+entity=client.get_entity("@Saygisizlar")
+users = client.get_participants(entity)
+print(len(users[0].first_name))
+     
+for user in users:
+     if user.username is not None:
+          print(user.username)
+          client.send_message(message.chat.id,f"@{user.username}")
 
-BotzHub.polling()
+     elif '/dur' in message.text:
+          string = '<b>Durduruldu!</b>'
+          bot.send_message(message.chat.id, string, parse_mode='html')
+          handler_state(False)
+
