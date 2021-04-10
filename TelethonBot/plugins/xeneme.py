@@ -10,7 +10,7 @@ api_hash = '2d0c249f0efe0fe1ea2551703a2f774d'
 bot_token = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg"
 client = TelegramClient('bot_token', api_id, api_hash)
 
-@bot.message_handler(commands=['basla','dur'])
+@BotzHub.message_handler(commands=['basla','dur'])
 def start(message):
     if '/basla' in message.text:
         handler_state(True)
