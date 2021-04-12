@@ -10,10 +10,9 @@ api_hash = '2d0c249f0efe0fe1ea2551703a2f774d'
 bot_token = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg"
 client = TelegramClient('bot_token', api_id, api_hash)
 
-@BotzHub.message_handler(commands=['basla','dur'])
-def start(message):
-    if '/basla' in message.text:
-        handler_state(True)
+@bot.message_handler(commands=["basla"])
+def basla(message):
+
 assert client.start()
 
 if not client.is_user_authorized():
@@ -27,9 +26,9 @@ for user in users:
      if user.username is not None:
           print(user.username)
           client.send_message(message.chat.id,f"@{user.username}")
-
-     elif '/dur' in message.text:
-          string = '<b>Durduruldu!</b>'
-          bot.send_message(message.chat.id, string, parse_mode='html')
-          handler_state(False)
-
+       
+@bot.message_handler(commands=["dur"])
+def dur(message):
+      string = '<b>Durduruldu!</b>'
+      bot.send_message(message.chat.id, string, parse_mode='html')
+      handler_state(False)
