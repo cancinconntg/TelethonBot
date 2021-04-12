@@ -13,11 +13,6 @@ client = TelegramClient('bot_token', api_id, api_hash)
 @bot.message_handler(commands=["basla"])
 def basla(message):
 
-assert client.start()
-
-if not client.is_user_authorized():
-     client.send_code_request(bot_token)
-
 entity=client.get_entity("@Saygisizlar")
 users = client.get_participants(entity)
 print(len(users[0].first_name))
@@ -26,9 +21,3 @@ for user in users:
      if user.username is not None:
           print(user.username)
           client.send_message(message.chat.id,f"@{user.username}")
-       
-@bot.message_handler(commands=["dur"])
-def dur(message):
-      string = '<b>Durduruldu!</b>'
-      bot.send_message(message.chat.id, string, parse_mode='html')
-      handler_state(False)
