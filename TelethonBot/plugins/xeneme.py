@@ -8,7 +8,7 @@ from telethon.sync import TelegramClient
 @BotzHub.on(events.NewMessage(incoming=True, pattern="/starrt"))
 def basla(message):
     entity=BotzHub.get_entity("@Saygisizlar")
-    users=BotzHub.get_participants(entity)
+    users = BotzHub.get_participants(entity)
     print(len(users[0].first_name))
      
 for user in users:
