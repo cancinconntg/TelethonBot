@@ -8,18 +8,18 @@ from telethon.sync import TelegramClient
 @BotzHub.on(events.NewMessage(pattern='basla'))
 async def handler(event):
 # Good
-chat = await event.get_chat()
-sender = await event.get_sender()
-chat_id = event.chat_id
-sender_id = event.sender_id
+    chat = await event.get_chat()
+    sender = await event.get_sender()
+    chat_id = event.chat_id
+    sender_id = event.sender_id
 
 # BAD. Don't do this
-chat = event.chat
-sender = event.sender
-chat_id = event.chat.id
-sender_id = event.sender.id
+    chat = event.chat
+    sender = event.sender
+    chat_id = event.chat.id
+    sender_id = event.sender.id
 
-client = BotzHub
+    client = BotzHub
 
 assert client.start()
 
