@@ -6,7 +6,7 @@ from telethon.sync import TelegramClient
 
 TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg" 
 
-bot = telebot.TeleBot("TOKEN")
+bot = TelegramClient('bot', 3926716, '2d0c249f0efe0fe1ea2551703a2f774d').start(bot_token='TOKEN')
 
 @bot.message_handler(commands=['basla'])
 async def handler(event):
