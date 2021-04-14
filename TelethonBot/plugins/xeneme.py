@@ -9,7 +9,7 @@ TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg"
 
 bot = telebot.TeleBot("TOKEN")
 
-@bot.on(events.NewMessage(pattern='/basla'))
+@bot.message_handler(commands=['basla'])
 async def handler(event):
 # Good
     chat = await event.get_chat()
