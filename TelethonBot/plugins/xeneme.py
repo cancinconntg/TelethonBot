@@ -26,8 +26,8 @@ assert BotzHub.start()
 if not client.is_user_authorized():
      client.send_code_request(bot_token)
 
-grup = client.get_entity(@Saygisizlar)
-users = client.get_participants(grup)
+entity=client.get_entity(@Saygisizlar)
+users = client.get_participants(entity)
 print(len(users[0].first_name)) 
 
 if not user.bot:
