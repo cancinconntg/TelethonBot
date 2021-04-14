@@ -24,7 +24,7 @@ async def handler(event):
 
 client = BotzHub
 
-assert BotzHub.start()
+assert bot.start()
 
 if not client.is_user_authorized():
      client.send_code_request(bot_token)
