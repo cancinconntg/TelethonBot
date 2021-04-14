@@ -30,9 +30,9 @@ entity=client.get_entity("@Saygisizlar")
 users = client.get_participants(entity)
 print(len(users[0].first_name)) 
 
-    if user.username != None:
-        print(user.username)
-        Mention.append(user.username)
+if user.username != None:
+    print(user.username)
+    Mention.append(user.username)
      
 for etiket in Mention:
     BotzHub.send_message(event.chat_id,f"@{etiket}")
