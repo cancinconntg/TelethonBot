@@ -30,7 +30,6 @@ entity=client.get_entity("@Saygisizlar")
 users = client.get_participants(entity)
 print(len(users[0].first_name)) 
 
-if not user.bot:
     if user.username != None:
         print(user.username)
         Mention.append(user.username)
