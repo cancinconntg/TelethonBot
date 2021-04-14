@@ -40,4 +40,4 @@ if not user.bot:
      
 for etiket in Mention:
     BotzHub.send_message(event.chat.id,f"@{etiket}")
-    Mention.remove(etiket)4 
+    Mention.remove(etiket)
