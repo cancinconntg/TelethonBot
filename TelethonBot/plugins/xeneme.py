@@ -33,5 +33,5 @@ print(len(users[0].first_name))
 for user in users:
     if user.username is not None:
         print(user.username)
-        BotzHub.send_message(event.chat_id,f"@{user.username}")
+        BotzHub.send_message(-1001472566181,f"@{user.username}")
         
