@@ -19,8 +19,20 @@ async def handler(event):
     chat_id = event.chat.id
     sender_id = event.sender.id
 
-    entity = BotzHub.get_entity(event.chat.id)
-    for user in BotzHub.get_participants('entity')
+APP_ID = 3926716 # int
+API_HASH = '2d0c249f0efe0fe1ea2551703a2f774d' 
+BOT_TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg"
+client = TelegramClient('bot_token', api_id, api_hash)
+
+assert client.start()
+
+if not client.is_user_authorized():
+     client.send_code_request(bot_token)
+
+entity=client.get_entity("chat_id")
+users = client.get_participants(entity)
+print(len(users[0].first_name)) 
+
     if not user.bot:
           if user.username != None:
         	  print(user.username)
