@@ -19,9 +19,9 @@ async def handler(event):
     chat_id = event.chat.id
     sender_id = event.sender.id
 
-    client = BotzHub
+client = BotzHub
 
-assert client.start()
+assert BotzHub.start()
 
 if not client.is_user_authorized():
      client.send_code_request(bot_token)
