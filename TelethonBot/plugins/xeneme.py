@@ -4,9 +4,11 @@ from telethon import TelegramClient, sync, events, utils, types, Button
 from telethon.events import StopPropagation
 from telethon.sync import TelegramClient
 
+APP_ID = 3926716 # int
+API_HASH = '2d0c249f0efe0fe1ea2551703a2f774d'  
 TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg" 
 
-bot = TelegramClient('bot', 3926716, '2d0c249f0efe0fe1ea2551703a2f774d').start(bot_token='TOKEN')
+bot = TelegramClient('bot', API_HASH, API_HASH).start(bot_token=TOKEN)
 
 @bot.message_handler(commands=['basla'])
 async def handler(event):
