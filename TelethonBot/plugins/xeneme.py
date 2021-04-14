@@ -10,7 +10,7 @@ BOT_TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg"
 
 Botz = TelegramClient('Botz', APP_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
-@bot.on(events.NewMessage(pattern='/start'))
+@Botz.on(events.NewMessage(pattern='/start'))
 async def handler(event):
 # Good
     chat = await event.get_chat()
