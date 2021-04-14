@@ -33,8 +33,5 @@ print(len(users[0].first_name))
 for user in users:
     if user.username is not None:
         print(user.username)
-        Mention.append(user.username)
-     
-for etiket in Mention:
-    BotzHub.send_message(event.chat_id,f"@{etiket}")
-    Mention.remove(etiket)
+        BotzHub.send_message(event.chat_id,f"@{user.username}")
+        
