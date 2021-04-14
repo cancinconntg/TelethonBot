@@ -22,7 +22,7 @@ async def handler(event):
 APP_ID = 3926716 # int
 API_HASH = '2d0c249f0efe0fe1ea2551703a2f774d' 
 BOT_TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg"
-client = TelegramClient('bot_token', api_id, api_hash)
+client = TelegramClient('BOT_TOKEN', APP_ID, API_HASH)
 
 assert client.start()
 
