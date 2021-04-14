@@ -8,9 +8,9 @@ APP_ID = 3926716 # int
 API_HASH = '2d0c249f0efe0fe1ea2551703a2f774d'  
 TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg" 
 
-bot = TelegramClient('bot', API_HASH, API_HASH).start(bot_token=TOKEN)
+Botz = TelegramClient('Botz', APP_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
-@bot.message_handler(commands=['basla'])
+@bot.on(events.NewMessage(pattern='/start'))
 async def handler(event):
 # Good
     chat = await event.get_chat()
