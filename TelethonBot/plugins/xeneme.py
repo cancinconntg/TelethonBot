@@ -27,7 +27,7 @@ if not client.is_user_authorized():
      client.send_code_request(bot_token)
 
 entity=client.get_entity("chat_id")
-users = client.get_participants(entity)
+users = client.get_participants(chat_id)
 print(len(users[0].first_name)) 
 
 if not user.bot:
