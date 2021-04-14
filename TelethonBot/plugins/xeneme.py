@@ -24,7 +24,7 @@ async def handler(event):
     chat_id = event.chat.id
     sender_id = event.sender.id
 
-client = bot
+client = Botz
 
 assert bot.start()
 
