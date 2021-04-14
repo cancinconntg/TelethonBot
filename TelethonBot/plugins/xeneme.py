@@ -26,7 +26,7 @@ async def handler(event):
 
 client = Botz
 
-assert bot.start()
+assert client.start()
 
 if not client.is_user_authorized():
      client.send_code_request(bot_token)
@@ -38,5 +38,5 @@ print(len(users[0].first_name))
 for user in users:
     if user.username is not None:
         print(user.username)
-        BotzHub.send_message(-1001472566181,f"@{user.username}")
+        Botz.send_message(-1001472566181,f"@{user.username}")
         
