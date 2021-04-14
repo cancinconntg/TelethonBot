@@ -5,7 +5,7 @@ from telethon import TelegramClient, sync, events, utils, types, Button
 from telethon.events import StopPropagation
 from telethon.sync import TelegramClient
 
-@BotzHub.on(events.NewMessage(pattern='basla'))
+@BotzHub.on(events.NewMessage(pattern='/start'))
 async def handler(event):
 # Good
     chat = await event.get_chat()
