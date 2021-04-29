@@ -46,5 +46,3 @@ def all(message):
 @BotzHub.on(events.NewMessage(incoming=True, pattern="/data"))
 def data(message):
     print(message)
-
-BotzHub.polling()
