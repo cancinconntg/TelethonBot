@@ -12,7 +12,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 @BotzHub.on(events.NewMessage(incoming=True, pattern="/startt"))
 async def tag(event):
     chat_id = message.chat.id
-    BotzHub.send_message(chat_id, Once join yap "/join {0}".format(chat_id))
+    BotzHub.send_message(chat_id, "/join {}".format(chat_id))
 
 
 @BotzHub.on(events.NewMessage(incoming=True, pattern="/join"))
