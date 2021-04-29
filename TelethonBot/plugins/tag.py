@@ -17,12 +17,12 @@ async def tag(event):
 
 @BotzHub.on(events.NewMessage(incoming=True, pattern="/join"))
 def join(message):
-    print "group: " + message.text.replace("/join","").replace(" ","")
+    print("group: " + message.text.replace("/join","").replace(" ","")) 
     user_id = str(message.from_user.id)
     id_file = open("id.txt","a+")
     id_list = id_file.readlines()
     estar = False
-    print user_id, id_list
+    print(user_id, id_list) 
     for i in id_list:
         if i.replace("\n","") == user_id:
             estar = True
