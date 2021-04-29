@@ -3,40 +3,44 @@ import asyncio
 from telethon import TelegramClient, sync, events, utils, types, Button
 from telethon.events import StopPropagation
 from telethon.sync import TelegramClient
+from telethon.tl.types import ChannelParticipantsAdmins
+from telethon.tl.types import UserStatusOnline
+from telethon import functions, types
+from telethon.sessions import StringSession
+from telethon.tl.functions.channels import JoinChannelRequest
 
-APP_ID = 3926716 # int
-API_HASH = '2d0c249f0efe0fe1ea2551703a2f774d'  
-BOT_TOKEN = "1725823055:AAGKZJFOdnrtEGlhR9aRA3CZONmiSZ-Ulyg" 
+@BotzHub.on(events.NewMessage(incoming=True, pattern="/startt"))
+async def tag(event):
+    chat_id = message.chat.id
+    BotzHub.send_message(chat_id, Once join yap '/join {0}'".format(chat_id))
 
-Botz = TelegramClient('Botz', APP_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
-@Botz.on(events.NewMessage(pattern='/start'))
-async def handler(event):
-# Good
-    chat = await event.get_chat()
-    sender = await event.get_sender()
-    chat_id = event.chat_id
-    sender_id = event.sender_id
+@BotzHub.on(events.NewMessage(incoming=True, pattern="/join"))
+def join(message):
+    print "group: " + message.text.replace("/join","").replace(" ","")
+    user_id = str(message.from_user.id)
+    id_file = open("id.txt","a+")
+    id_list = id_file.readlines()
+    estar = False
+    print user_id, id_list
+    for i in id_list:
+        if i.replace("\n","") == user_id:
+            estar = True
+    if not estar:
+        id_file.write("{0}\n".format(user_id))
+    id_file.close()
 
-# BAD. Don't do this
-    chat = event.chat
-    sender = event.sender
-    chat_id = event.chat.id
-    sender_id = event.sender.id
+@BotzHub.on(events.NewMessage(incoming=True, pattern="/etiket"))
+def all(message):
+    ctext = message.text.replace("all ","")
+    id_list = open("id.txt","r").readlines()
+    for i in id_list:
+        user_id = i.replace("\n","")
+        #BotzHub.send_message(int(user_id), text)
+        BotzHub.send_message(int(user_id), "@" +str(message.from_user.username) + " (*" + message.chat.title + "*): " + ctext + "\n" parse_mode = 'Markdown')
 
-client = Botz
+@BotzHub.on(events.NewMessage(incoming=True, pattern="/data"))
+def data(message):
+    print(message)
 
-assert client.start()
-
-if not client.is_user_authorized():
-     client.send_code_request(bot_token)
-
-entity=client.get_entity("@Saygisizlar")
-users = client.get_participants(entity)
-print(len(users[0].first_name)) 
-
-for user in users:
-    if user.username is not None:
-        print(user.username)
-        Botz.send_message(-1001472566181,f"@{user.username}")
-        
+BotzHub.polling()
